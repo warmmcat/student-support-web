@@ -1,5 +1,10 @@
 'use strict';
 
+const drawStylesheet = document.createElement('link');
+drawStylesheet.rel = 'stylesheet';
+drawStylesheet.href = 'css/draw.css';
+document.head.append(drawStylesheet);
+
 const yearTarget = document.querySelector('#current-year');
 const drawButton = document.querySelector('#draw-button');
 const drawAgainButton = document.querySelector('#draw-again-button');
