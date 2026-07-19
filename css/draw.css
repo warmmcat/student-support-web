@@ -1,0 +1,123 @@
+.draw-section {
+  background: linear-gradient(180deg, rgba(239, 229, 214, .48), rgba(248, 242, 232, 0));
+}
+
+.draw-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.draw-intro {
+  max-width: 42rem;
+}
+
+.draw-intro h2 {
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 3.1rem);
+}
+
+.draw-intro > p {
+  color: var(--color-muted);
+}
+
+.draw-notice {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-left: 5px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 253, 248, .75);
+}
+
+.draw-notice p {
+  margin: .35rem 0 0;
+  color: var(--color-muted);
+  font-size: .94rem;
+}
+
+button.button {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.button-secondary {
+  border: 1px solid var(--color-primary-dark);
+  background: transparent;
+  color: var(--color-primary-dark);
+}
+
+.button-secondary:hover {
+  background: rgba(79, 97, 72, .08);
+}
+
+.result-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(110, 128, 100, .25);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.result-card[hidden] {
+  display: none;
+}
+
+.result-number {
+  margin: 0 0 .35rem;
+  color: var(--color-primary-dark);
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.result-card h2 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3.4rem);
+}
+
+.result-description {
+  margin: 1.15rem 0;
+  white-space: pre-line;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.result-card blockquote {
+  margin: 1.4rem 0;
+  padding: 1.2rem 1.25rem;
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: #f4eadc;
+  font-size: clamp(1.15rem, 4vw, 1.4rem);
+  font-weight: 700;
+}
+
+.result-reminder {
+  color: var(--color-muted);
+  font-size: .93rem;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 860px) {
+  .draw-layout {
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: 3.5rem;
+  }
+
+  .draw-intro {
+    position: sticky;
+    top: 104px;
+  }
+
+  .result-card {
+    padding: 2rem;
+  }
+}
