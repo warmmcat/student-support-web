@@ -1,1 +1,1 @@
-PLACEHOLDER
+window.HEXAGRAMS = [];
