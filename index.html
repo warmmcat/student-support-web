@@ -50,10 +50,36 @@
         </div>
 
         <article class="result-card" id="result-card" aria-labelledby="result-title" aria-live="polite" hidden>
-          <p class="result-number" id="result-number"></p>
-          <h2 id="result-title"></h2>
-          <p class="result-description" id="result-description"></p>
-          <blockquote id="result-message"></blockquote>
+          <header class="result-header">
+            <p class="result-number" id="result-number"></p>
+            <h2 id="result-title"></h2>
+          </header>
+          <div class="result-sections">
+            <section class="result-section result-overview" aria-labelledby="result-description-heading">
+              <h3 id="result-description-heading">說明</h3>
+              <div class="result-copy" id="result-description"></div>
+            </section>
+            <section class="result-section" aria-labelledby="result-love-heading">
+              <h3 id="result-love-heading">關於感情</h3>
+              <div class="result-copy" id="result-love"></div>
+            </section>
+            <section class="result-section" aria-labelledby="result-study-heading">
+              <h3 id="result-study-heading">關於課業</h3>
+              <div class="result-copy" id="result-study"></div>
+            </section>
+            <section class="result-section" aria-labelledby="result-relationships-heading">
+              <h3 id="result-relationships-heading">關於人際</h3>
+              <div class="result-copy" id="result-relationships"></div>
+            </section>
+            <section class="result-section" aria-labelledby="result-stress-heading">
+              <h3 id="result-stress-heading">壓力調適</h3>
+              <div class="result-copy" id="result-stress"></div>
+            </section>
+            <section class="result-section result-message-section" aria-labelledby="result-message-heading">
+              <h3 id="result-message-heading">給同學的一句話</h3>
+              <blockquote id="result-message"></blockquote>
+            </section>
+          </div>
           <p class="result-reminder">請把這段文字當作一個溫柔的提問，而不是必須照做的答案。你仍然可以依自己的處境、價值與安全需要作選擇。</p>
           <div class="result-actions"><button class="button button-secondary" id="draw-again-button" type="button">再抽一卦</button><a class="text-link" href="#help">我想找人聊聊</a></div>
         </article>
