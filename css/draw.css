@@ -64,6 +64,11 @@ button.button {
   display: none;
 }
 
+.result-header {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
 .result-number {
   margin: 0 0 .35rem;
   color: var(--color-primary-dark);
@@ -76,24 +81,54 @@ button.button {
   font-size: clamp(2rem, 8vw, 3.4rem);
 }
 
-.result-description {
-  margin: 1.15rem 0;
+.result-sections {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.result-section {
+  padding: 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fffdf8;
+}
+
+.result-section h3 {
+  margin: 0 0 .65rem;
+  color: var(--color-primary-dark);
+  font-size: 1.08rem;
+  letter-spacing: .03em;
+}
+
+.result-overview {
+  background: #f2f3ec;
+}
+
+.result-copy {
   white-space: pre-line;
   color: var(--color-muted);
-  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.result-message-section {
+  border-color: rgba(201, 137, 101, .34);
+  background: #f4eadc;
 }
 
 .result-card blockquote {
-  margin: 1.4rem 0;
-  padding: 1.2rem 1.25rem;
-  border-left: 4px solid var(--color-accent);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  background: #f4eadc;
-  font-size: clamp(1.15rem, 4vw, 1.4rem);
+  margin: 0;
+  white-space: pre-line;
+  color: var(--color-text);
+  font-size: clamp(1.08rem, 4vw, 1.3rem);
   font-weight: 700;
+  line-height: 1.75;
 }
 
 .result-reminder {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
   color: var(--color-muted);
   font-size: .93rem;
 }
@@ -106,9 +141,20 @@ button.button {
   margin-top: 1.5rem;
 }
 
+@media (min-width: 700px) {
+  .result-sections {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .result-overview,
+  .result-message-section {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (min-width: 860px) {
   .draw-layout {
-    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
     gap: 3.5rem;
   }
 
