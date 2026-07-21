@@ -8,6 +8,7 @@ document.head.append(drawStylesheet);
 const yearTarget = document.querySelector('#current-year');
 const drawButton = document.querySelector('#draw-button');
 const drawAgainButton = document.querySelector('#draw-again-button');
+const drawAnimation = document.querySelector('#draw-animation');
 const resultCard = document.querySelector('#result-card');
 const resultNumber = document.querySelector('#result-number');
 const resultTitle = document.querySelector('#result-title');
@@ -23,6 +24,7 @@ if (yearTarget) {
 }
 
 let previousIndex = -1;
+let isDrawing = false;
 
 function getRandomIndex(length) {
   if (length <= 1) return 0;
@@ -59,15 +61,25 @@ function setResultContent(target, text, category) {
   target.textContent = formatSection(text, category);
 }
 
-function drawHexagram() {
-  if (!Array.isArray(window.HEXAGRAMS) || window.HEXAGRAMS.length !== 64) {
-    return;
+function setDrawingState(active) {
+  isDrawing = active;
+
+  [drawButton, drawAgainButton].forEach((button) => {
+    if (!button) return;
+    button.disabled = active;
+    button.setAttribute('aria-busy', active.toString());
+  });
+
+  if (drawButton) {
+    drawButton.textContent = active ? '正在抽取一卦…' : '靜心後，抽一卦';
   }
 
-  const index = getRandomIndex(window.HEXAGRAMS.length);
-  const hexagram = window.HEXAGRAMS[index];
-  previousIndex = index;
+  if (drawAgainButton) {
+    drawAgainButton.textContent = active ? '正在抽取…' : '再抽一卦';
+  }
+}
 
+function revealHexagram(hexagram) {
   resultNumber.textContent = `第 ${hexagram.number} 卦`;
   resultTitle.textContent = hexagram.name;
   setResultContent(resultDescription, hexagram.description, '說明');
@@ -76,12 +88,40 @@ function drawHexagram() {
   setResultContent(resultRelationships, hexagram.relationships, '關於人際');
   setResultContent(resultStress, hexagram.stress, '壓力調適');
   setResultContent(resultMessage, hexagram.message, '給同學的一句話');
+
+  if (drawAnimation) drawAnimation.hidden = true;
   resultCard.hidden = false;
+  setDrawingState(false);
 
   window.requestAnimationFrame(() => {
     resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
     resultTitle.focus({ preventScroll: true });
   });
+}
+
+function drawHexagram() {
+  if (isDrawing || !Array.isArray(window.HEXAGRAMS) || window.HEXAGRAMS.length !== 64) {
+    return;
+  }
+
+  const index = getRandomIndex(window.HEXAGRAMS.length);
+  const hexagram = window.HEXAGRAMS[index];
+  previousIndex = index;
+
+  setDrawingState(true);
+  resultCard.hidden = true;
+
+  if (drawAnimation) {
+    drawAnimation.hidden = false;
+    window.requestAnimationFrame(() => {
+      drawAnimation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animationDuration = prefersReducedMotion ? 350 : 2000;
+
+  window.setTimeout(() => revealHexagram(hexagram), animationDuration);
 }
 
 if (resultTitle) {
