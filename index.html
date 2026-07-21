@@ -57,6 +57,21 @@
           <button class="button button-primary" id="draw-button" type="button">靜心後，抽一卦</button>
         </div>
 
+        <div class="draw-animation" id="draw-animation" role="status" aria-live="polite" aria-label="正在為你抽取一卦" hidden>
+          <div class="bagua-spinner" aria-hidden="true">
+            <span class="bagua-symbol">☯</span>
+            <span class="trigram trigram-1">☰</span>
+            <span class="trigram trigram-2">☱</span>
+            <span class="trigram trigram-3">☲</span>
+            <span class="trigram trigram-4">☳</span>
+            <span class="trigram trigram-5">☴</span>
+            <span class="trigram trigram-6">☵</span>
+            <span class="trigram trigram-7">☶</span>
+            <span class="trigram trigram-8">☷</span>
+          </div>
+          <p>讓心慢下來，卦象正在形成……</p>
+        </div>
+
         <article class="result-card" id="result-card" aria-labelledby="result-title" aria-live="polite" hidden>
           <header class="result-header">
             <p class="result-number" id="result-number"></p>
