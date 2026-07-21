@@ -2,7 +2,7 @@
 
 const drawStylesheet = document.createElement('link');
 drawStylesheet.rel = 'stylesheet';
-drawStylesheet.href = 'css/draw.css?v=20260721-2';
+drawStylesheet.href = 'css/draw.css?v=20260721-3';
 document.head.append(drawStylesheet);
 
 const yearTarget = document.querySelector('#current-year');
@@ -118,9 +118,9 @@ function drawHexagram() {
     });
   }
 
-  // 無論使用者是否啟用「減少動態效果」，都保留完整等待時間；
+  // 無論使用者是否啟用「減少動態效果」，都保留約三秒等待時間；
   // 該設定只停用旋轉動畫，不縮短抽籤揭示流程。
-  window.setTimeout(() => revealHexagram(hexagram), 2100);
+  window.setTimeout(() => revealHexagram(hexagram), 3000);
 }
 
 if (resultTitle) {
